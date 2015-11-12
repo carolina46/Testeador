@@ -1,15 +1,14 @@
 package modelo;
 
-import java.util.Date;
-
 import anotaciones.Mock;
 import anotaciones.MockStringAttribute;
 import anotaciones.MockTodayAttribute;
 import java.util.Date;
 
-
 @Mock
-public class Notificacion {
+public class Notification {
+	
+	public Notification(){}
 	
 	@MockStringAttribute({"Juan", "Pedro", "Juana", "Manuela"})
 	public String child;
@@ -25,8 +24,6 @@ public class Notificacion {
 	
 	@MockStringAttribute ({"Alegre", "Entusiasmado", "Molesto"})
 	public String pictogram;
-	
-	
 	
 	
 	public String getChild() {return child;}
@@ -49,5 +46,9 @@ public class Notificacion {
 
 	public void setPictogram(String pictogram) {this.pictogram = pictogram;}
 
-
+	@Override
+	public String toString() {
+		return "Notificacion [child=" + child + ", context=" + context + ", category=" + category + ", sent=" + sent
+				+ ", pictogram=" + pictogram + "]";
+	}
 }
