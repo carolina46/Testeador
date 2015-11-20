@@ -78,27 +78,23 @@ public class Testeador {
 
 
 	@SuppressWarnings("unchecked")
-	public static JSONArray generarJson(){
+	public static StringBuffer generarJson(){
 		List<Notification> list;
-		JSONArray jsons=null;
+	    StringBuffer stringBuffer = new StringBuffer();
 		try {
 			list = MockGenerator.createMockInstances(modelo.Notification.class, 40);
-
-			jsons = new JSONArray();
 			JSONObject json;
 			
 			for (Notification notification : list){
 				json = new JSONObject();
-
 				json.put("child",	 notification.getChild());
 				json.put("context",	 notification.getContext());
 				json.put("category", notification.getCategory());
 				json.put("pictogram",notification.getPictogram());
 				json.put("sent",     notification.getSent().getTime());
-				
-				jsons.add(json);
+				stringBuffer.append(json + System.getProperty("line.separator"));
 			}
-			return jsons;
+			return stringBuffer;
 			
 			
 		} catch (InstantiationException | IllegalAccessException
@@ -107,7 +103,7 @@ public class Testeador {
 			e.printStackTrace();
 		}
 
-		return jsons;
+		return stringBuffer;
 		
 		
 		
