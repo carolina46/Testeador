@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -59,8 +60,9 @@ public class Testeador {
 	         
 			
 		} catch (IOException e) {
-			e.printStackTrace();
-		}return false;
+
+		}
+		return false;
 		
 	}
 
