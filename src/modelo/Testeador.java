@@ -1,19 +1,12 @@
 package modelo;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
-import java.net.ConnectException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Testeador {
@@ -25,12 +18,11 @@ public class Testeador {
 		while(!enviarNotificaciones(notificaciones)){
 			try {
 				TimeUnit.SECONDS.sleep(10);
-				System.out.println("oooo");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("todo ok");
+		
 	}
 	
 	
@@ -52,13 +44,10 @@ public class Testeador {
 			out.write(json);
 			out.close();
 			
-	        
-	        
 	        //RESPUESTA SERVIDOR
 	        int status = conn.getResponseCode();
 	        return status == HttpURLConnection.HTTP_OK;
-	         
-			
+	        			
 		} catch (IOException e) {
 
 		}
@@ -92,7 +81,7 @@ public class Testeador {
 				json.put("category", notification.getCategory());
 				json.put("pictogram",notification.getPictogram());
 				json.put("sent",     notification.getSent().getTime());
-				stringBuffer.append(json + System.getProperty("line.separator"));
+				stringBuffer.append(json + "  ");
 			}
 			return stringBuffer;
 			
