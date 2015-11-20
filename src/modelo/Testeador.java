@@ -49,8 +49,8 @@ public class Testeador {
 			conn.setRequestMethod("POST");
 			
 			OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());//PARA PODER ESCRIBIR DATOS A ENVIAR
-			out.write(URLEncoder.encode(json, "UTF-8")); 
-	        out.close();
+			out.write(json);
+			out.close();
 			
 	        
 	        
