@@ -10,7 +10,7 @@ public class Notification {
 	
 	public Notification(){}
 	
-	@MockStringAttribute({"Juan", "Pedro", "Juana", "Manuela"})
+	@MockStringAttribute({"Juan", "Pedro", "Juana", "Manuela", "Mara"})
 	public String child;
 	
 	@MockStringAttribute ({"Establo-Terapia","Pista", "Hogar"})
