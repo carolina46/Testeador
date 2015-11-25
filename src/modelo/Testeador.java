@@ -7,6 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Testeador {
@@ -17,7 +19,7 @@ public class Testeador {
 		String notificaciones=generarJson().toString();
 		while(!enviarNotificaciones(notificaciones)){
 			try {
-				TimeUnit.SECONDS.sleep(10);
+				TimeUnit.SECONDS.sleep(3);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -51,25 +53,14 @@ public class Testeador {
 		} catch (IOException e) {
 
 		}
-		return false;
-		
+		return false;		
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 	@SuppressWarnings("unchecked")
-	public static StringBuffer generarJson(){
+	public static JSONArray generarJson(){
 		List<Notification> list;
-	    StringBuffer stringBuffer = new StringBuffer();
+		JSONArray jArray = new JSONArray();
 		try {
 			list = MockGenerator.createMockInstances(modelo.Notification.class, 40);
 			JSONObject json;
@@ -81,10 +72,8 @@ public class Testeador {
 				json.put("category", notification.getCategory());
 				json.put("pictogram",notification.getPictogram());
 				json.put("sent",     notification.getSent().getTime());
-				stringBuffer.append(json + "  ");
+				jArray.add(json);
 			}
-			return stringBuffer;
-			
 			
 		} catch (InstantiationException | IllegalAccessException
 				| InvocationTargetException | NoSuchMethodException
@@ -92,10 +81,6 @@ public class Testeador {
 			e.printStackTrace();
 		}
 
-		return stringBuffer;
-		
-		
-		
-		
+		return jArray;
 	}
 }
